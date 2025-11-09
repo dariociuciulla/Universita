@@ -40,6 +40,9 @@ void LinkedList :: InsertAtEnd(int value){
     if(tail == NULL){
         head = tail = newNode;
         return;
+    }else{
+        tail -> next = newNode;
+        tail = newNode;
     }
 }
 
@@ -92,6 +95,7 @@ void LinkedList :: deleteNode(int value){
         tail = previous;
     }
     delete current;
+    
 }
 
 void LinkedList :: printList(){

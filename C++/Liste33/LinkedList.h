@@ -26,6 +26,7 @@ public:
     void deleteFromStart();
     void deleteFromEnd();
     void deleteNode(int value);
+    void printList();
 };
 
 #endif /* LinkedList_h */
