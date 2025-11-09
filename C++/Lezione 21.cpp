@@ -35,6 +35,12 @@ int main(){
 #include <iostream>
 using namespace std;
 
+void scambio (int a[], int i, int min){
+    int temp = a[i];
+    a[i]=a[min];
+    a[min]=temp;
+}
+
 int a[8]= {41, 37, 10, 74, 98, 22, 83, 66};
 
 int main(){
@@ -46,9 +52,7 @@ int main(){
                 min=j;
         }
         if(min!=i){
-            int temp = a[i];
-            a[i]=a[min];
-            a[min]=temp;
+            scambio(a,i,min);
         }
         cout<<a[i]<<" ";
     }
