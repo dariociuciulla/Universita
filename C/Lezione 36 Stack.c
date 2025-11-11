@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-/* Imolementazione Stack con Array
+/* Implementazione Stack con Array
  
 #define MAX_SIZE 10
 
