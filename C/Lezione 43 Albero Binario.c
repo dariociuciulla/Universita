@@ -82,7 +82,7 @@ void inserisciDestra(struct nodo *genitore, int valore){
 void preOrder(struct nodo *radice){
     if(radice == NULL)
         return;
-    printf("%d", radice -> dato);
+    printf("%d ", radice -> dato);
     preOrder(radice -> sinistra);
     preOrder(radice -> destra);
 }
@@ -92,7 +92,7 @@ void inOrder(struct nodo *radice){
     if(radice == NULL)
         return;
     inOrder(radice -> sinistra);
-    printf("%d", radice -> dato);
+    printf("%d ", radice -> dato);
     inOrder(radice -> destra);
 }
 
@@ -102,7 +102,7 @@ void postOrder(struct nodo *radice){
         return;
     postOrder(radice -> sinistra);
     postOrder(radice -> destra);
-    printf("%d", radice -> dato);
+    printf("%d ", radice -> dato);
 }
 
 //Funzione conta nodi
@@ -144,6 +144,25 @@ void stampa_albero_grafico(struct nodo *radice, int livello){
         printf("|--"); stampa_albero_grafico(radice -> destra, livello + 1);
     }
 }
+//Funzione BFS
+void BFS (struct nodo *radice){
+    if(radice == NULL)
+        return;
+    
+    struct nodo *coda[100];
+    int front = 0;
+    int rear = 0;
+    coda[rear ++] = radice;
+    
+    while(front != rear){
+        struct nodo *temp = coda[front ++];
+        printf("%d ", temp -> dato);
+        if(temp -> sinistra != NULL)
+            coda[rear ++] = temp -> sinistra;
+        if(temp -> destra != NULL)
+            coda[rear ++] = temp -> destra;
+    }
+}
 
 //main
 int main(void){
@@ -172,6 +191,24 @@ int main(void){
     inserisciSinistra(radice -> sinistra -> destra, 1001);
     inserisciDestra(radice -> destra -> sinistra, 1110);
     inserisciDestra(radice -> destra -> destra, 1111);
+    printf("Stampa ALbero: \n");
     stampa_albero(radice, 0);
+    printf("\n");
+    printf("Stampa ALbero Grafico: \n");
     stampa_albero_grafico(radice, 0);
+    printf("\n");
+    printf("Stampa ALbero In order: \n");
+    inOrder(radice);
+    printf("\n");
+    printf("Stampa ALbero Pre order: \n");
+    preOrder(radice);
+    printf("\n");
+    printf("Stampa ALbero Post order: \n");
+    postOrder(radice);
+    printf("\n");
+    printf("Stampa ALbero BFS: \n");
+    BFS(radice);
+    printf("\n");
+    printf("Conta nodi: \n");
+    printf("I nodi sono: %d  \n", contaNodi(radice));
 }
